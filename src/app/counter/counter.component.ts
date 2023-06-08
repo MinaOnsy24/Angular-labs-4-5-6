@@ -10,69 +10,77 @@ import { CartService } from '../services/cart.service';
 export class CounterComponent {
   counter: number = 0;
   prodacts !: any[];
-  qun : any = 0 ;
+  qun: number = 0;
   // newProdact !:any
   totalPrice: number = 0;
   constructor(private counterService: CounterService,
     private cartService: CartService) {
 
   }
+  //to sub total price
+  totalPice() {
+    this.totalPrice = 0
+    this.qun = 0
+    this.prodacts.forEach((prodact) => {
+      prodact.totalPrice = prodact.qun * prodact.price
+      this.totalPrice += prodact.totalPrice
+      this.qun+= prodact.qun
+    })
+    console.log(this.qun)
+    this.counterService.setCounter(this.qun)
+
+  }
 
   ngOnInit() {
 
-    this.counterService.getCounter().subscribe((res) => this.counter = res)
+    this.counterService.getCounter().subscribe((res) => this.qun = res)
     this.cartService.getCounter().subscribe((res) => this.prodacts = res)
 
-    this.prodacts.forEach((prodact) => { prodact.totalPrice = prodact.qun * prodact.price })
-
-    const singlePriceForProdact = this.prodacts.map((prodact) => prodact.totalPrice)
-    for (let i = 0; i < singlePriceForProdact.length; i++) {
-      this.totalPrice = this.totalPrice + singlePriceForProdact[i];
-    }
-
-    const qunForProdact = this.prodacts.map((prodact) => prodact.qun)
-    for (let i = 0; i < qunForProdact.length; i++) {
-      this.qun = this.qun + qunForProdact;
-    }
-    // this.qun = this.qun + qunForProdact;
-    console.log(this.qun)
+    this.totalPice()
 
   }
 
+
+
   up(prodact: any) {
-    // this.counterService.setCounter(++this.counter)
-    const addQun = this.prodacts.find((obj) =>{
-
-      if(obj.id == prodact.id){
-        console.log("if")
-        console.log(prodact)
-        obj.qun + 1
-        console.log(prodact)
-
-      }else{
-        console.log("else")
-        return obj}
+    const index = this.prodacts.findIndex((obj) => {
+      return obj.id == prodact.id
     })
+    this.prodacts[index].qun++
+    console.log(this.prodacts)
+    this.totalPice()
 
-    console.log(addQun)
-    // addQun.qun = addQun.qun + 1
-    // this.prodacts.push(addQun)
-    // return prodact
   }
 
   remove(prodact: any) {
-
+    console.log("remove")
   }
 
   down(prodact: any) {
-    if (this.counter !== 1 || prodact.qun !== 1) {
-      // this.counterService.setCounter(--this.counter)
-      const addQun = this.prodacts.find((obj) => obj.id == prodact.id)
-      addQun.qun = addQun.qun - 1
-    }else if( prodact.qun == 0){
-      console.log(prodact)
-    // this.prodacts.pop(prodact)
+    const index = this.prodacts.findIndex((obj) => {
+      return obj.id == prodact.id
+    })
+    this.prodacts[index].qun--
+    console.log(this.prodacts)
+    this.totalPice()
+
+    if (prodact.qun == 0) {
+      this.prodacts
     }
 
+
+
+
   }
+
+
+
+
+
+
+
+
+
+
+
 }
