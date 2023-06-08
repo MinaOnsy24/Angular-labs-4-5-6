@@ -1,28 +1,4 @@
-<h2>Your Card</h2>
-<!--
-<button class="btn btn-danger mx-3" (click)="down()">-</button>
-<span>{{counter}}</span>
-<button class="btn btn-success mx-3" (click)="up()">+</button> -->
-
-<!-- <div class="row mx-auto pt-3">
-  <div class="col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2 mb-3" *ngFor="let prodacts of prodacts" id="{{prodacts.id}}">
-        <div class="card moves" >
-            <img [src]="prodacts.images[0]" class="card-img-top" alt="{{prodacts.title}}">
-            <div class="card-body">
-                  <span >{{prodacts.stock | stock}}</span>
-                  <h5 class="card-title fw-bold text-center">{{prodacts.title}}</h5>
-                  <p class="card-text">{{prodacts.description}}</p>
-                  <p class="card-text fw-bold fs-5">Price : {{prodacts.price}} </p>
-                  <span>{{prodacts.createdAt |date}}</span>
-                  <hr>
-                  <div >
-                      <button class="btn btn-primary w-100"  >Know More</button>
-                      <button class="btn btn-primary w-100" >Add To Cart</button>
-                  </div>
-            </div>
-        </div>
-  </div>
-</div> -->
+<h2 class="text-center mb-3">Your Card</h2>
 
 <table class="table table-bordered">
   <thead class="text-center">
@@ -46,31 +22,9 @@
         <span class="mx-2">{{prodacts.qun}}</span>
         <a class="btn btn-success" (click)="up(prodacts)">+</a>
       </td>
-      <td class="text-center btn btn-danger" (click)="remove(prodacts)">Remove</td>
+      <td class="text-center btn fw-bold text-danger" (click)="remove(prodacts)">Remove</td>
     </tr>
   </tbody>
 </table>
 
 <h4 class="text-end">Total : {{totalPrice}} EGP</h4>
-<!-- <div class="border border-dark rounded-1 p-2 d-flex justify-content-between fw-bold">
-  <span>#</span>
-  <span class="">Prodact Name</span>
-  <span>Price</span>
-  <span>imge</span>
-  <span>action</span>
-</div> -->
-
-<!-- <div class="border border-dark rounded-1 p-2 fw-bold mt-3">
-  <div class="d-flex justify-content-between" *ngFor="let prodacts of prodacts">
-    <span>{{prodacts.id}}</span>
-    <span class="">{{prodacts.title}}</span>
-    <span>{{prodacts.price}}</span>
-    <span>
-      <img [src]="prodacts.images[0]" class="img-thumbnail w-25" alt="{{prodacts.title}}">
-    </span>
-    <span>
-      <a>-</a>
-      <a>+</a>
-    </span>
-  </div>
-</div> -->

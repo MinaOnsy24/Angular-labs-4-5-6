@@ -14,7 +14,7 @@
 </div> -->
 
 <!-- [ngStyle] ="{'color' : {{data.stock}} > 0 ? 'green' : 'red' }" -->
-
+<!-- [ngStyle]="{'color' : {{product.stock}} > 0 ? 'green' : 'red' }" -->
 
 <!-- ^^^^^ from json file ^^^^^ -->
 <div class="row mx-auto pt-3">
@@ -25,11 +25,11 @@
                   <span >{{prdact.stock | stock}}</span>
                   <h5 class="card-title fw-bold text-center">{{prdact.title}}</h5>
                   <!-- <p class="card-text">{{prdact.description}}</p> -->
-                  <p class="card-text ">Price : {{prdact.price | currency:'LE' }} </p>
+                  <p class="card-text ">Price : {{prdact.price | currency:' LE ' }} </p>
                   <span>{{prdact.createdAt |date}}</span>
                   <hr>
                   <div >
-                      <button class="btn btn-primary w-100"  >Know More</button>
+                      <button class="btn btn-primary w-100"  (click)="redirectToDetails(prdact.id)">Know More</button>
                       <button class="btn btn-primary w-100" (click)="add(prdact)">Add To Cart</button>
                   </div>
             </div>

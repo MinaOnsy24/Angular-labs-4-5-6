@@ -44,6 +44,10 @@ export class ProductComponent {
 
       //if this prodact already exists
     } else {
+      if (!(prodact.qun == prodact.stock)) {
+
+      }
+
       //find this prodact
       const addSameProdact = this.cart.find((obj) => obj.id == prodact.id)
       //if true
@@ -58,15 +62,17 @@ export class ProductComponent {
     }
     this.cartService.setCounter(this.cart)
     //to add quns to counter in navbar
+    if (!(prodact.qun == prodact.stock)) {
     this.qun = this.qun + 1;
     this.counterService.setCounter(this.qun)
     console.log(this.qun)
+    }
   }
 
 
-  // redirectToDetails(){
-  //   this.prodacts.navigate([])
-  // }
+  redirectToDetails(id:any){
+    this.router.navigate(['prodact-detalis',id])
+  }
 
 
 }
