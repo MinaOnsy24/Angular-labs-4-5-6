@@ -22,9 +22,9 @@
         <div class="card moves" >
             <img [src]="prdact.images[0]" class="card-img-top" alt="{{prdact.title}}" style="height: 15rem;">
             <div class="card-body">
+                  <!--[ngStyle]="{'color' : {{product.rating}} > 5 ? 'green' : 'red' } " Not Working -->
                   <span >{{prdact.stock | stock}}</span>
                   <h5 class="card-title fw-bold text-center">{{prdact.title}}</h5>
-                  <!-- <p class="card-text">{{prdact.description}}</p> -->
                   <p class="card-text ">Price : {{prdact.price | currency:' LE ' }} </p>
                   <span>{{prdact.createdAt |date}}</span>
                   <hr>
@@ -37,5 +37,4 @@
   </div>
 </div>
 
-<!-- (click)="redirectToDetails()" -->
 
